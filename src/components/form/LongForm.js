@@ -17,12 +17,13 @@ const LongForm = () => {
 
     const reducer = (state, action) => {
         console.log(action);
+        console.log(state);
 
         switch (action.type) {
             case 'INPUT':
                 return {
                     ...state,
-                    [action.type.name]: action.type.value,       // Object Bracket Notation
+                    [action.payload.name]: action.payload.value,    // Object Bracket Notation
                 };
             // case 'TOGGLE':
             //     return {
