@@ -11,8 +11,7 @@ const LongForm = () => {
         education: '',
         quantity: '',
         feedback: '',
-        term: true,
-
+        term: false,
     };
 
     const reducer = (state, action) => {
@@ -25,11 +24,11 @@ const LongForm = () => {
                     ...state,
                     [action.payload.name]: action.payload.value,    // Object Bracket Notation
                 };
-            // case 'TOGGLE':
-            //     return {
-            //         ...state,
-            //         term: !state.term,
-            //     };
+            case 'TOGGLE':
+                return {
+                    ...state,
+                    term: !state.term,
+                };
             default:
                 return state
         }
@@ -51,12 +50,12 @@ const LongForm = () => {
         })
     };
 
-    // const handleToggle = () => {
-    //     dispatch({
-    //         type: 'TOGGLE',
+    const handleToggle = () => {
+        dispatch({
+            type: 'TOGGLE',
 
-    //     })
-    // }
+        })
+    }
 
     const submit = (event) => {
         event.preventDefault();
@@ -174,13 +173,13 @@ const LongForm = () => {
                             type="checkbox"
                             name="term"
                             id="terms"
-                        // onClick={handleToggle}
+                            onClick={handleToggle}
                         />
                         <label htmlFor="terms">I agree to terms and conditions</label>
                     </div>
                     <button
                         type="submit"
-                    // disabled={state.term}
+                        disabled={!state.term}
                     >
                         Submit
                     </button>
